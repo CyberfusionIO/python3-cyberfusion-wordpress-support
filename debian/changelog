@@ -1,0 +1,232 @@
+python3-cyberfusion-wordpress-support (1.4.4.2.1) unstable; urgency=low
+
+  - Publish to PyPI
+
+ -- William Edwards <wedwards@cyberfusion.nl>  Wed, 21 Aug 2024 16:53:00 +0200
+
+python3-cyberfusion-wordpress-support (1.4.4.2) unstable; urgency=low
+
+  - Make Theme.test_get_theme_name_by_zip_file public
+
+ -- William Edwards <wedwards@cyberfusion.nl>  Sat, 10 Aug 2024 09:38:00 +0200
+
+python3-cyberfusion-wordpress-support (1.4.4.1) unstable; urgency=low
+
+  - Don't let find_executable cause exception when importing wp_cli
+
+ -- William Edwards <wedwards@cyberfusion.nl>  Fri, 09 Aug 2024 22:12:00 +0200
+
+python3-cyberfusion-wordpress-support (1.4.4) unstable; urgency=low
+
+  - Return exceptions instead of bools
+
+ -- William Edwards <wedwards@cyberfusion.nl>  Tue, 09 Jul 2024 15:47:00 +0200
+
+python3-cyberfusion-wordpress-support (1.4.3.2) unstable; urgency=low
+
+  - Add DirectoryNotEmptyError when destination directory is not empty on install
+
+ -- William Edwards <wedwards@cyberfusion.nl>  Tue, 09 Jul 2024 14:12:00 +0200
+
+python3-cyberfusion-wordpress-support (1.4.3.1) unstable; urgency=low
+
+  - Add CommandFailedError.streams
+
+ -- William Edwards <wedwards@cyberfusion.nl>  Sat, 06 Jul 2024 17:04:00 +0200
+
+python3-cyberfusion-wordpress-support (1.4.3) unstable; urgency=low
+
+  - Add `Core.download(force=...)` to override existing files
+  - Remove create_installation helper function
+
+ -- William Edwards <wedwards@cyberfusion.nl>  Sat, 06 Jul 2024 09:53:00 +0200
+
+python3-cyberfusion-wordpress-support (1.4.2) unstable; urgency=low
+
+  - Raise custom exceptions when command failed
+
+ -- William Edwards <wedwards@cyberfusion.nl>  Sat, 06 Jul 2024 09:28:00 +0200
+
+python3-cyberfusion-wordpress-support (1.4.1) unstable; urgency=low
+
+  - Add Options.get_single + Config.get_pair
+
+ -- William Edwards <wedwards@cyberfusion.nl>  Fri, 05 Jul 2024 21:26:00 +0200
+
+python3-cyberfusion-wordpress-support (1.4) unstable; urgency=low
+
+  - Add core version attribute
+  - Add core update method
+  - Use more specific exceptions for themes
+
+ -- William Edwards <wedwards@cyberfusion.nl>  Sun, 23 Jun 2024 21:22:00 +0200
+
+python3-cyberfusion-wordpress-support (1.3.4.4) unstable; urgency=low
+
+  - Use subprocess
+  - Always log to stdout
+
+ -- William Edwards <wedwards@cyberfusion.nl>  Fri, 28 Apr 2023 17:38:00 +0200
+
+python3-cyberfusion-wordpress-support (1.3.4.3) unstable; urgency=low
+
+  - Use find_executable
+
+ -- William Edwards <wedwards@cyberfusion.nl>  Thu, 16 Mar 2023 12:16:00 +0200
+
+python3-cyberfusion-wordpress-support (1.3.4.2) unstable; urgency=low
+
+  - Use singular enums
+
+ -- William Edwards <wedwards@cyberfusion.nl>  Tue, 07 Mar 2023 20:40:00 +0200
+
+python3-cyberfusion-wordpress-support (1.3.4.1) unstable; urgency=low
+
+  - Allow any 2.x WP-CLI version
+  - Update version type from float to string
+
+ -- William Edwards <wedwards@cyberfusion.nl>  Fri, 13 Jan 2023 17:10:00 +0200
+
+python3-cyberfusion-wordpress-support (1.3.4) unstable; urgency=low
+
+  - Add themes
+
+ -- William Edwards <wedwards@cyberfusion.nl>  Tue, 20 Dec 2022 16:13:00 +0200
+
+python3-cyberfusion-wordpress-support (1.3.3) unstable; urgency=low
+
+  - Add User.update_password
+
+ -- William Edwards <wedwards@cyberfusion.nl>  Mon, 19 Dec 2022 16:09:00 +0200
+
+python3-cyberfusion-wordpress-support (1.3.2.3.1) unstable; urgency=low
+
+  - Rename package to include python3
+
+ -- William Edwards <wedwards@cyberfusion.nl>  Tue, 4 Oct 2022 17:34:00 +0200
+
+python3-cyberfusion-wordpress-support (1.3.2.3) unstable; urgency=low
+
+  - Cache: Add flush Eelementor CSS cache
+
+ -- William Edwards <wedwards@cyberfusion.nl>  Tue, 20 Sep 2022 10:49:00 +0200
+
+python3-cyberfusion-wordpress-support (1.3.2.2.1) unstable; urgency=low
+
+  - Use WP-CLI system installation
+
+ -- William Edwards <wedwards@cyberfusion.nl>  Mon, 19 Sep 2022 17:23:00 +0200
+
+python3-cyberfusion-wordpress-support (1.3.2.2) unstable; urgency=low
+
+  - Depend on new WP-CLI package
+
+ -- William Edwards <wedwards@cyberfusion.nl>  Mon, 19 Sep 2022 17:10:00 +0200
+
+python3-cyberfusion-wordpress-support (1.3.2.1) unstable; urgency=low
+
+  - Use new GitLab CI template
+
+ -- William Edwards <wedwards@cyberfusion.nl>  Wed, 31 Aug 2022 10:46:00 +0200
+
+python3-cyberfusion-wordpress-support (1.3.2) unstable; urgency=low
+
+  - Add Config.shuffle_salts
+
+ -- William Edwards <wedwards@cyberfusion.nl>  Fri, 05 Aug 2022 16:54:00 +0200
+
+python3-cyberfusion-wordpress-support (1.3.1) unstable; urgency=low
+
+  - Add config pairs
+
+ -- William Edwards <wedwards@cyberfusion.nl>  Thu, 14 Jul 2022 15:46:00 +0200
+
+python3-cyberfusion-wordpress-support (1.3) unstable; urgency=low
+
+  - Add database module + search and replace method
+  - Add options module
+  - Add cache module + flush method
+  - Split Core and Config into separate modules
+
+ -- William Edwards <wedwards@cyberfusion.nl>  Thu, 14 Jul 2022 14:26:00 +0200
+
+python3-cyberfusion-wordpress-support (1.2.7) unstable; urgency=low
+
+  - Add create_installation
+
+ -- William Edwards <wedwards@cyberfusion.nl>  Tue, 14 Jun 2022 15:05:00 +0200
+
+python3-cyberfusion-wordpress-support (1.2.6) unstable; urgency=low
+
+  - Use properties
+
+ -- William Edwards <wedwards@cyberfusion.nl>  Tue, 14 Jun 2022 13:47:00 +0200
+
+python3-cyberfusion-wordpress-support (1.2.5) unstable; urgency=low
+
+  - WPCLICommand: Take list as command and pass command as list to CyberfusionCommand
+  - Pass commands as list to WPCLICommand
+
+ -- William Edwards <wedwards@cyberfusion.nl>  Tue, 19 Oct 2021 17:10:00 +0200
+
+python3-cyberfusion-wordpress-support (1.2.4.1) unstable; urgency=low
+
+  - WPCLICommand: Don't read CyberfusionCommand when quiet. This ensures stdout
+    is None, meaning stdout is not present in CommandNonZeroError either.
+
+ -- William Edwards <wedwards@cyberfusion.nl>  Sun, 17 Oct 2021 21:39:00 +0200
+
+python3-cyberfusion-wordpress-support (1.2.4) unstable; urgency=low
+
+  - WPCLICommand: Add quiet
+
+ -- William Edwards <wedwards@cyberfusion.nl>  Sun, 17 Oct 2021 21:13:00 +0200
+
+python3-cyberfusion-wordpress-support (1.2.3) unstable; urgency=low
+
+  - Core: Pass admin password using stdin in install
+
+ -- William Edwards <wedwards@cyberfusion.nl>  Sun, 17 Oct 2021 18:39:00 +0200
+
+python3-cyberfusion-wordpress-support (1.2.2) unstable; urgency=low
+
+  - WPCLICommand: Add stdin
+  - Config: Pass database user password using stdin in create
+
+ -- William Edwards <wedwards@cyberfusion.nl>  Sun, 17 Oct 2021 16:40:00 +0200
+
+python3-cyberfusion-wordpress-support (1.2.1.1) unstable; urgency=low
+
+  - Remove now ignored flake8 noqa's
+
+ -- William Edwards <wedwards@cyberfusion.nl>  Mon, 30 Aug 2021 10:27:00 +0200
+
+python3-cyberfusion-wordpress-support (1.2.1) unstable; urgency=low
+
+  - Bump debhelper compatibility level to 10
+  - Bump Standards-Version to 4.3.0
+
+ -- William Edwards <wedwards@cyberfusion.nl>  Sat, 14 Aug 2021 20:11:00 +0200
+
+python3-cyberfusion-wordpress-support (1.2) unstable; urgency=low
+
+  - WPCLICommand: Remove uid and gid
+
+ -- William Edwards <wedwards@cyberfusion.nl>  Thu, 24 Jun 2021 17:23:00 +0200
+
+python3-cyberfusion-wordpress-support (1.1) unstable; urgency=low
+
+  - WPCLICommand: Add uid and gid
+  - Remove installation_manager
+  - Add Core.install
+  - Add Config.create database_host
+  - Add Installation home
+  - Let Core.download, Plugin.install, Plugin.activate return bool
+
+ -- William Edwards <wedwards@cyberfusion.nl>  Fri, 14 May 2021 19:44:00 +0200
+
+python3-cyberfusion-wordpress-support (1.0) unstable; urgency=low
+
+  - Initial release
+
+ -- William Edwards <wedwards@cyberfusion.nl>  Tue, 2 Mar 2021 14:47:00 +0200
