@@ -1,5 +1,3 @@
-import pytest
-
 from cyberfusion.Common import generate_random_string
 from cyberfusion.WordPressSupport import Installation
 from cyberfusion.WordPressSupport.users import User, Users
@@ -39,8 +37,7 @@ def test_get_user_one_time_login_url(
     user = User(installation_installed, id_=1)
 
     assert (
-        "/wp-login.php?user_id=1&one_time_login_token="
-        in user.get_one_time_login_url()
+        "/wp-login.php?user_id=1&one_time_login_token=" in user.get_one_time_login_url()
     )
 
 

@@ -26,9 +26,7 @@ def test_plugin_install(installation_installed: Installation) -> None:
 def test_plugin_activate(
     installation_installed_with_unactivated_plugin: Installation,
 ) -> None:
-    plugin = Plugin(
-        installation_installed_with_unactivated_plugin, "classic-editor"
-    )
+    plugin = Plugin(installation_installed_with_unactivated_plugin, "classic-editor")
 
     plugin.activate()
 
@@ -36,9 +34,7 @@ def test_plugin_activate(
 def test_plugin_installed_and_activated_attributes(
     installation_installed_with_activated_plugin: Installation,
 ) -> None:
-    plugin = Plugin(
-        installation_installed_with_activated_plugin, "classic-editor"
-    )
+    plugin = Plugin(installation_installed_with_activated_plugin, "classic-editor")
 
     assert plugin.is_installed
     assert plugin.is_activated

@@ -12,9 +12,7 @@ class Database:
         """Set attributes and call functions."""
         self.installation = installation
 
-    def search_replace(
-        self, *, search_string: str, replace_string: str
-    ) -> int:
+    def search_replace(self, *, search_string: str, replace_string: str) -> int:
         """Search and replace string in database."""
         self.installation.command.execute(
             [

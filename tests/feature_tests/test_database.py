@@ -1,5 +1,3 @@
-import pytest
-
 from cyberfusion.Common import generate_random_string
 from cyberfusion.WordPressSupport import Installation
 from cyberfusion.WordPressSupport.database import Database

@@ -27,17 +27,13 @@ class Core:
     def is_installed(self) -> bool:
         """Set if is installed."""
         try:
-            self.installation.command.execute(
-                [self.NAME_COMMAND, "is-installed"]
-            )
+            self.installation.command.execute([self.NAME_COMMAND, "is-installed"])
         except CommandFailedError:
             return False
 
         return True
 
-    def download(
-        self, version: str, locale: str, *, force: bool = False
-    ) -> None:
+    def download(self, version: str, locale: str, *, force: bool = False) -> None:
         """Download core files."""
         if os.listdir(self.installation.command.path):
             if not force:

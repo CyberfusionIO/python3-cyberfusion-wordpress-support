@@ -11,9 +11,7 @@ class Option:
 
     NAME_COMMAND = "option"
 
-    def __init__(
-        self, installation: Installation, *, name: str, value: Any
-    ) -> None:
+    def __init__(self, installation: Installation, *, name: str, value: Any) -> None:
         """Set attributes and call functions."""
         self.installation = installation
 

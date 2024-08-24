@@ -17,14 +17,10 @@ class Cache:
 
     def _regenerate_elementor_css(self) -> None:
         """Regenerate Elementor CSS if Elementor used."""
-        if not Plugin(
-            self.installation, self.NAME_SUBCOMMAND_ELEMENTOR
-        ).is_installed:
+        if not Plugin(self.installation, self.NAME_SUBCOMMAND_ELEMENTOR).is_installed:
             return
 
-        self.installation.command.execute(
-            [self.NAME_SUBCOMMAND_ELEMENTOR, "flush-css"]
-        )
+        self.installation.command.execute([self.NAME_SUBCOMMAND_ELEMENTOR, "flush-css"])
 
     def flush(self) -> None:
         """Flush cache."""

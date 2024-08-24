@@ -6,10 +6,8 @@ from cyberfusion.WordPressSupport import Installation
 from cyberfusion.WordPressSupport.config import Config
 from cyberfusion.WordPressSupport.core import Core
 from cyberfusion.WordPressSupport.exceptions import (
-    CommandFailedError,
     CoreAlreadyInstalledError,
 )
-from tests.conftest import database_host, database_name
 
 VERSION = "6.4.2"
 

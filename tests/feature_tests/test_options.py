@@ -35,31 +35,22 @@ def test_get_option_with_string_value(
     installation_installed: Installation,
 ) -> None:
     assert (
-        Options(installation_installed).get_single("default_role").value
-        == "subscriber"
+        Options(installation_installed).get_single("default_role").value == "subscriber"
     )
 
 
 def test_get_option_with_integer_value(
     installation_installed: Installation,
 ) -> None:
-    assert (
-        Options(installation_installed).get_single("use_trackback").value == 0
-    )
+    assert Options(installation_installed).get_single("use_trackback").value == 0
 
 
 def test_update_option(
     installation_installed: Installation,
 ) -> None:
-    assert (
-        Options(installation_installed).get_single("comment_moderation").value
-        == 0
-    )
+    assert Options(installation_installed).get_single("comment_moderation").value == 0
 
     option = Option(installation_installed, name="comment_moderation", value=1)
     option.update()
 
-    assert (
-        Options(installation_installed).get_single("comment_moderation").value
-        == 1
-    )
+    assert Options(installation_installed).get_single("comment_moderation").value == 1
