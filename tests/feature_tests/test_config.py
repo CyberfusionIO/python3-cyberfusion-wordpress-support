@@ -10,7 +10,6 @@ from cyberfusion.WordPressSupport.exceptions import (
     CommandFailedError,
     PairNotExists,
 )
-from tests.conftest import database_name
 
 
 def test_installation_uninstalled_config_create(
@@ -89,10 +88,7 @@ def test_get_pairs(
 def test_get_pair(
     installation_installed: Installation,
 ) -> None:
-    assert (
-        Config(installation_installed).get_pair("DB_CHARSET").name
-        == "DB_CHARSET"
-    )
+    assert Config(installation_installed).get_pair("DB_CHARSET").name == "DB_CHARSET"
 
 
 def test_get_pair_not_exists(
@@ -105,9 +101,7 @@ def test_get_pair_not_exists(
 def test_update_pair(
     installation_installed: Installation,
 ) -> None:
-    assert (
-        Config(installation_installed).get_pair("DB_CHARSET").value == "utf8"
-    )
+    assert Config(installation_installed).get_pair("DB_CHARSET").value == "utf8"
 
     pair = Pair(
         installation_installed,
@@ -117,9 +111,7 @@ def test_update_pair(
     )
     pair.update()
 
-    assert (
-        Config(installation_installed).get_pair("DB_CHARSET").value == "latin1"
-    )
+    assert Config(installation_installed).get_pair("DB_CHARSET").value == "latin1"
 
 
 def test_shuffle_salts(

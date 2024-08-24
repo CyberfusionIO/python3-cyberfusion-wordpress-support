@@ -47,15 +47,11 @@ class Plugin:
         if self.is_installed:
             raise PluginAlreadyInstalledError
 
-        self.installation.command.execute(
-            [self.NAME_COMMAND, "install", self.name]
-        )
+        self.installation.command.execute([self.NAME_COMMAND, "install", self.name])
 
     def activate(self) -> None:
         """Activate plugin."""
         if self.is_activated:
             raise PluginAlreadyActivatedError
 
-        self.installation.command.execute(
-            [self.NAME_COMMAND, "activate", self.name]
-        )
+        self.installation.command.execute([self.NAME_COMMAND, "activate", self.name])

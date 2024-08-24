@@ -61,9 +61,7 @@ class Theme:
 
         return self.installation.command.stdout
 
-    def install_from_repository(
-        self, *, version: Optional[str] = None
-    ) -> None:
+    def install_from_repository(self, *, version: Optional[str] = None) -> None:
         """Install theme from WordPress repository.
 
         If theme is already installed, theme is updated/downgraded to specified
@@ -111,6 +109,4 @@ class Theme:
         if self.is_activated:
             raise ThemeAlreadyActivatedError
 
-        self.installation.command.execute(
-            [self.NAME_COMMAND, "activate", self.name]
-        )
+        self.installation.command.execute([self.NAME_COMMAND, "activate", self.name])

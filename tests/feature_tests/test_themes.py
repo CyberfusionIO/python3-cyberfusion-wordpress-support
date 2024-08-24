@@ -32,9 +32,7 @@ def test_theme_install_from_repository_not_installed(
 def test_theme_install_from_repository_installed(
     installation_installed_with_activated_theme: Installation,
 ) -> None:
-    theme = Theme(
-        installation_installed_with_activated_theme, "twentynineteen"
-    )
+    theme = Theme(installation_installed_with_activated_theme, "twentynineteen")
 
     theme.install_from_repository()
 
@@ -42,9 +40,7 @@ def test_theme_install_from_repository_installed(
 def test_theme_install_from_repository_with_version(
     installation_installed_with_activated_theme: Installation,
 ) -> None:
-    theme = Theme(
-        installation_installed_with_activated_theme, "twentynineteen"
-    )
+    theme = Theme(installation_installed_with_activated_theme, "twentynineteen")
 
     assert theme.version != "2.3"
 
@@ -67,9 +63,7 @@ def test_get_theme_name_by_zip_file(
 def test_theme_install_from_url_wrong_name(
     installation_installed_with_activated_theme: Installation,
 ) -> None:
-    theme = Theme(
-        installation_installed_with_activated_theme, "twentynineteen"
-    )
+    theme = Theme(installation_installed_with_activated_theme, "twentynineteen")
 
     with pytest.raises(URLMissesThemeError):
         theme.install_from_url(
@@ -90,9 +84,7 @@ def test_theme_install_from_url_not_installed(
 def test_theme_install_from_url_installed(
     installation_installed_with_activated_theme: Installation,
 ) -> None:
-    theme = Theme(
-        installation_installed_with_activated_theme, "twentynineteen"
-    )
+    theme = Theme(installation_installed_with_activated_theme, "twentynineteen")
 
     assert theme.version != "2.3"
 
@@ -106,9 +98,7 @@ def test_theme_install_from_url_installed(
 def test_theme_activate(
     installation_installed_with_unactivated_theme: Installation,
 ) -> None:
-    theme = Theme(
-        installation_installed_with_unactivated_theme, "twentynineteen"
-    )
+    theme = Theme(installation_installed_with_unactivated_theme, "twentynineteen")
 
     theme.activate()
 
@@ -116,9 +106,7 @@ def test_theme_activate(
 def test_theme_installed_and_activated_attributes(
     installation_installed_with_activated_theme: Installation,
 ) -> None:
-    theme = Theme(
-        installation_installed_with_activated_theme, "twentynineteen"
-    )
+    theme = Theme(installation_installed_with_activated_theme, "twentynineteen")
 
     assert theme.is_installed
     assert theme.is_activated

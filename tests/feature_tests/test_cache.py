@@ -1,4 +1,3 @@
-import pytest
 from pytest_mock import MockerFixture  # type: ignore[attr-defined]
 
 from cyberfusion.WordPressSupport import Installation
@@ -20,9 +19,7 @@ def test_cache_flush_regenerate_elementor_css(
 
     Cache(installation_installed_with_activated_elementor_plugin).flush()
 
-    spy_execute.assert_has_calls(
-        [mocker.call(mocker.ANY, ["elementor", "flush-css"])]
-    )
+    spy_execute.assert_has_calls([mocker.call(mocker.ANY, ["elementor", "flush-css"])])
 
 
 def test_cache_flush_no_regenerate_elementor_css(
