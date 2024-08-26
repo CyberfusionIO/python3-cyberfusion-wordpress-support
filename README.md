@@ -10,12 +10,6 @@ Run the following command to install the package from PyPI:
 
     pip3 install python3-cyberfusion-wordpress-support
 
-## Generic
-
-Run the following command to create a source distribution:
-
-    python3 setup.py sdist
-
 Next, install the following software:
 
 * WP-CLI, according to the [documentation](https://make.wordpress.org/cli/handbook/guides/installing/#recommended-installation) or using [Homebrew](https://formulae.brew.sh/formula/wp-cli). WP-CLI is not required to run tests (automatically downloaded on every suite run).
