@@ -1,3 +1,9 @@
+python3-cyberfusion-wordpress-support (1.4.5) unstable; urgency=low
+
+  - Allow one-time-login plugin to be present (broken in 1.4.4)
+
+ -- William Edwards <wedwards@cyberfusion.nl>  Sun, 08 Dec 2024 17:28:00 +0200
+
 python3-cyberfusion-wordpress-support (1.4.4.2.3) unstable; urgency=low
 
   - Remove deprecated setup.py in favour of pyproject.toml

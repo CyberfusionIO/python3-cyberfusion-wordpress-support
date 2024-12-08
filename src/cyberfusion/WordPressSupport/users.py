@@ -5,6 +5,7 @@ from typing import List, Optional
 
 from cyberfusion.Common import get_tmp_file
 from cyberfusion.WordPressSupport import Installation
+from cyberfusion.WordPressSupport.exceptions import PluginAlreadyInstalledError
 from cyberfusion.WordPressSupport.plugins import Plugin
 
 
@@ -53,7 +54,12 @@ class User:
         # Install plugin
 
         plugin = Plugin(self.installation, self.NAME_SUBCOMMAND_ONE_TIME_LOGIN)
-        plugin.install()
+
+        try:
+            plugin.install()
+        except PluginAlreadyInstalledError:
+            pass
+
         plugin.activate()
 
         # Execute command
