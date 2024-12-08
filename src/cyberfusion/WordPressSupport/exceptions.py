@@ -60,6 +60,10 @@ class CommandFailedError(Exception):
         """Combine output streams."""
         return f"Stdout:\n\n{self.stdout}\n\nStderr:\n\n{self.stderr}"
 
+    def __str__(self) -> str:
+        """Stringify exception."""
+        return self.streams
+
 
 class CoreError(Exception):
     """Error related to core."""
