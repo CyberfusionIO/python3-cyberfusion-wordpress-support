@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "python3-cyberfusion-wordpress-support"
-version = "1.4.4.2.3"
+version = "1.4.5"
 description = "Library for WordPress."
 readme = "README.md"
 authors = [
