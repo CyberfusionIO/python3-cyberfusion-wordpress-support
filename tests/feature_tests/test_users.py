@@ -47,11 +47,16 @@ def test_get_user_one_time_login_url_plugin_installed(
 ) -> None:
     """Test get_one_time_login_url when plugin is already installed."""
     plugin = Plugin(installation_installed, User.NAME_SUBCOMMAND_ONE_TIME_LOGIN)
-    plugin.install()
 
-    assert plugin.is_installed
+    assert not plugin.is_installed
+    assert not plugin.is_activated
 
     user = User(installation_installed, id_=1)
+
+    user.get_one_time_login_url()
+
+    assert plugin.is_installed
+    assert plugin.is_activated
 
     user.get_one_time_login_url()
 

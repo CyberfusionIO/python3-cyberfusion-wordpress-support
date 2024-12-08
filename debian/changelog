@@ -1,3 +1,9 @@
+python3-cyberfusion-wordpress-support (1.4.6) unstable; urgency=low
+
+  - Allow one-time-login plugin to be activated (broken in 1.4.4)
+
+ -- William Edwards <wedwards@cyberfusion.nl>  Sun, 08 Dec 2024 19:27:00 +0200
+
 python3-cyberfusion-wordpress-support (1.4.5) unstable; urgency=low
 
   - Allow one-time-login plugin to be present (broken in 1.4.4)

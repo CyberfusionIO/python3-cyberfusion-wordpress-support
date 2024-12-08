@@ -5,7 +5,10 @@ from typing import List, Optional
 
 from cyberfusion.Common import get_tmp_file
 from cyberfusion.WordPressSupport import Installation
-from cyberfusion.WordPressSupport.exceptions import PluginAlreadyInstalledError
+from cyberfusion.WordPressSupport.exceptions import (
+    PluginAlreadyInstalledError,
+    PluginAlreadyActivatedError,
+)
 from cyberfusion.WordPressSupport.plugins import Plugin
 
 
@@ -60,7 +63,10 @@ class User:
         except PluginAlreadyInstalledError:
             pass
 
-        plugin.activate()
+        try:
+            plugin.activate()
+        except PluginAlreadyActivatedError:
+            pass
 
         # Execute command
 
