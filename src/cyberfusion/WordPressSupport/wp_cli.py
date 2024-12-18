@@ -17,13 +17,11 @@ class WPCLICommand:
     def __init__(
         self,
         path: str,
-        home: str,
         *,
         binary_path: Optional[str] = None,
     ) -> None:
         """Construct, execute and validate command execute."""
         self.path = path
-        self.home = home
         self._binary_path = binary_path
 
     @property
@@ -60,7 +58,10 @@ class WPCLICommand:
                 stderr=subprocess.PIPE,
                 text=True,
                 cwd=self.path,
-                env=os.environ.copy() | {"PWD": self.path, "HOME": self.home},
+                env=os.environ.copy()
+                | {
+                    "PWD": self.path,
+                },
                 stdin=stdin,
             )
         except subprocess.CalledProcessError as e:
