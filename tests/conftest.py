@@ -95,7 +95,6 @@ def wp_cli_command(
 ) -> WPCLICommand:
     return WPCLICommand(
         workspace_directory,
-        workspace_directory,
         binary_path=wp_cli_binary_path,
     )
 
@@ -107,7 +106,6 @@ def installation_uninstalled(
     wp_cli_binary_path: Generator[str, None, None],
 ) -> Installation:
     return Installation(
-        workspace_directory,
         workspace_directory,
         wp_cli_binary_path=wp_cli_binary_path,
     )
@@ -135,7 +133,6 @@ def installation_installed(
         version = "latest"
 
     installation = Installation(
-        workspace_directory,
         workspace_directory,
         wp_cli_binary_path=wp_cli_binary_path,
     )

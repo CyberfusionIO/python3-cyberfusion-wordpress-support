@@ -34,17 +34,13 @@ def test_raises_exception(wp_cli_command: WPCLICommand) -> None:
 def test_binary_path_set(wp_cli_command: WPCLICommand) -> None:
     WP_CLI_PATH = generate_random_string()
 
-    wp_cli_command = WPCLICommand(
-        wp_cli_command.path, wp_cli_command.home, binary_path=WP_CLI_PATH
-    )
+    wp_cli_command = WPCLICommand(wp_cli_command.path, binary_path=WP_CLI_PATH)
 
     assert wp_cli_command.binary_path == WP_CLI_PATH
 
 
 def test_binary_path_unset(wp_cli_command: WPCLICommand) -> None:
-    wp_cli_command = WPCLICommand(
-        wp_cli_command.path, wp_cli_command.home, binary_path=None
-    )
+    wp_cli_command = WPCLICommand(wp_cli_command.path, binary_path=None)
 
     with pytest.raises(ExecutableNotFound):
         wp_cli_command.binary_path
