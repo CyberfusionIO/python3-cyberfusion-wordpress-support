@@ -16,8 +16,8 @@ from typing import List
 class PairType(StrEnum):
     """Pair types."""
 
-    CONSTANT: str = "constant"
-    VARIABLE: str = "variable"
+    CONSTANT = "constant"
+    VARIABLE = "variable"
 
 
 class Pair:
