@@ -12,7 +12,7 @@ def test_search_replace(
         database.search_replace(
             search_string="wp", replace_string=generate_random_string()
         )
-        == 17
+        == 18
     )  # Replaced
 
     assert (

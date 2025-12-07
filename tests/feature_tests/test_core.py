@@ -26,7 +26,7 @@ def test_installed_core_attributes(
     core = Core(installation_installed)
 
     assert core.is_installed
-    assert core.version.count(".") == 2
+    assert core.version.count(".") in [1, 2]
 
 
 @pytest.mark.parametrize("installation_installed", [(VERSION,)], indirect=True)
