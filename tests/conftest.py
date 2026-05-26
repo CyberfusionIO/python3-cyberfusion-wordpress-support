@@ -192,6 +192,17 @@ def installation_installed_with_activated_elementor_plugin(
 
 
 @pytest.fixture
+def installation_installed_with_activated_woocommerce_plugin(
+    installation_installed: Installation,
+) -> Installation:
+    plugin = Plugin(installation_installed, "woocommerce")
+    plugin.install()
+    plugin.activate()
+
+    return installation_installed
+
+
+@pytest.fixture
 def installation_installed_with_unactivated_theme(
     installation_installed: Installation,
 ) -> Installation:
