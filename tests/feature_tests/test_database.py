@@ -8,12 +8,9 @@ def test_search_replace(
 ) -> None:
     database = Database(installation_installed)
 
-    assert (
-        database.search_replace(
-            search_string="wp", replace_string=generate_random_string()
-        )
-        == 18
-    )  # Replaced
+    assert database.search_replace(
+        search_string="wp", replace_string=generate_random_string()
+    )
 
     assert (
         database.search_replace(

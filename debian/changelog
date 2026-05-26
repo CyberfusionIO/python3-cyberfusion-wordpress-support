@@ -1,3 +1,9 @@
+python3-cyberfusion-wordpress-support (2.2) unstable; urgency=low
+
+  - Add HPOS methods
+
+ -- William Edwards <wedwards@cyberfusion.nl>  Tue, 26 May 2026 06:49:00 +0200
+
 python3-cyberfusion-wordpress-support (2.1) unstable; urgency=low
 
   - Update to Trixie
