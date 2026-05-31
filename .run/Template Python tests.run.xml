@@ -9,10 +9,12 @@
     <option name="IS_MODULE_SDK" value="true" />
     <option name="ADD_CONTENT_ROOTS" value="true" />
     <option name="ADD_SOURCE_ROOTS" value="true" />
+    <option name="DEBUG_JUST_MY_CODE" value="true" />
     <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+    <option name="RUN_TOOL" value="" />
     <option name="_new_keywords" value="&quot;&quot;" />
     <option name="_new_parameters" value="&quot;&quot;" />
-    <option name="_new_additionalArguments" value="&quot;--database-username\u003droot --database-password\u003d\u0027a3e5a6EUsVQxmAQYcyEfSDSR\u0027 --database-host\u003d127.0.0.1:21312&quot;" />
+    <option name="_new_additionalArguments" value="&quot;--database-username\u003droot --database-password\u003da3e5a6EUsVQxmAQYcyEfSDSR --database-host\u003d127.0.0.1:21312&quot;" />
     <option name="_new_target" value="&quot;&quot;" />
     <option name="_new_targetType" value="&quot;PATH&quot;" />
     <method v="2">
