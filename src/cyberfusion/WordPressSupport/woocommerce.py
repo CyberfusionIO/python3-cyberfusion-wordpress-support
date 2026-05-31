@@ -1,6 +1,8 @@
 """Classes for managing WooCommerce."""
 
 from cyberfusion.WordPressSupport import Installation
+from cyberfusion.WordPressSupport.exceptions import WoocommerceNotInstalledError
+from cyberfusion.WordPressSupport.plugins import Plugin
 
 
 class Woocommerce:
@@ -15,6 +17,11 @@ class Woocommerce:
     @property
     def is_hpos_enabled(self) -> bool:
         """Set if HPOS is enabled."""
+        plugin = Plugin(self.installation, "woocommerce")
+
+        if not plugin.is_activated:
+            raise WoocommerceNotInstalledError
+
         self.installation.command.execute([self.NAME_COMMAND, "hpos", "status"])
 
         # Parse raw text, as command doesn't support JSON output:
