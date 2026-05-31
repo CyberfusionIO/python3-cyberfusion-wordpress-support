@@ -5,7 +5,7 @@ from cyberfusion.WordPressSupport.exceptions import (
     PluginAlreadyActivatedError,
     PluginAlreadyInstalledError,
 )
-from cyberfusion.WordPressSupport.plugins import Plugin
+from cyberfusion.WordPressSupport.plugins import Plugin, Plugins, PluginStatus
 
 
 def test_plugin_uninstalled_attributes(
@@ -44,3 +44,34 @@ def test_plugin_installed_and_activated_attributes(
 
     with pytest.raises(PluginAlreadyActivatedError):
         plugin.activate()
+
+
+def test_get_plugins_without_status(
+    installation_installed: Installation,
+) -> None:
+    plugin = Plugin(installation_installed, "classic-editor")
+
+    plugin.install()
+
+    plugins = Plugins(installation_installed).get()
+
+    assert len(plugins) == 3
+
+    assert any(plugin.name == "akismet" for plugin in plugins)
+    assert any(plugin.name == "hello" for plugin in plugins)
+    assert any(plugin.name == "classic-editor" for plugin in plugins)
+
+
+def test_get_plugins_with_status(
+    installation_installed: Installation,
+) -> None:
+    plugin = Plugin(installation_installed, "classic-editor")
+
+    plugin.install()
+    plugin.activate()
+
+    plugins = Plugins(installation_installed).get(status=PluginStatus.ACTIVE)
+
+    assert len(plugins) == 1
+
+    assert plugins[0].name == "classic-editor"
