@@ -93,3 +93,7 @@ class PluginAlreadyInstalledError(PluginError):
     """Plugin is already installed."""
 
     pass
+
+
+class WoocommerceNotInstalledError(PluginError):
+    pass
