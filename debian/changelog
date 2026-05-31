@@ -1,3 +1,9 @@
+python3-cyberfusion-wordpress-support (2.4) UNRELEASED; urgency=low
+
+  - Add methods to get plugins and themes
+
+ -- William Edwards <wedwards@cyberfusion.nl>  Sun, 31 May 2026 15:26:00 +0200
+
 python3-cyberfusion-wordpress-support (2.3) unstable; urgency=low
 
   - Add index methods

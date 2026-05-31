@@ -1,7 +1,8 @@
 """Classes for managing themes."""
 
 import os
-from typing import Optional
+from enum import StrEnum
+from typing import Optional, List
 from zipfile import ZipFile
 
 from cyberfusion.Common import download_from_url
@@ -12,6 +13,12 @@ from cyberfusion.WordPressSupport.exceptions import (
     ThemeNotInstalledError,
     URLMissesThemeError,
 )
+
+
+class ThemeStatus(StrEnum):
+    ACTIVE = "active"
+    PARENT = "parent"
+    INACTIVE = "inactive"
 
 
 class Theme:
@@ -110,3 +117,38 @@ class Theme:
             raise ThemeAlreadyActivatedError
 
         self.installation.command.execute([self.NAME_COMMAND, "activate", self.name])
+
+
+class Themes:
+    """Abstraction of WordPress themes."""
+
+    NAME_COMMAND = "theme"
+
+    def __init__(self, installation: Installation) -> None:
+        """Set attributes and call functions."""
+        self.installation = installation
+
+    def get(self, status: Optional[ThemeStatus] = None) -> List[Theme]:
+        """Get themes."""
+        results: List[Theme] = []
+
+        # Construct command
+
+        command = [self.NAME_COMMAND, "list"]
+
+        if status:
+            command.append(f"--status={status}")
+
+        # Execute command
+
+        self.installation.command.execute(
+            command,
+            json_format=True,
+        )
+
+        # Iterate over results
+
+        for theme in self.installation.command.stdout:
+            results.append(Theme(self.installation, theme["name"]))
+
+        return results

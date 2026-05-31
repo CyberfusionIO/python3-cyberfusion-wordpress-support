@@ -6,7 +6,7 @@ from cyberfusion.WordPressSupport.exceptions import (
     ThemeNotInstalledError,
     URLMissesThemeError,
 )
-from cyberfusion.WordPressSupport.themes import Theme
+from cyberfusion.WordPressSupport.themes import Theme, Themes, ThemeStatus
 
 
 def test_theme_uninstalled_attributes(
@@ -115,3 +115,32 @@ def test_theme_installed_and_activated_attributes(
         theme.activate()
 
     assert theme.version
+
+
+def test_get_themes_without_status(
+    installation_installed: Installation,
+) -> None:
+    theme = Theme(installation_installed, "astra")
+
+    theme.install_from_repository()
+
+    themes = Themes(installation_installed).get()
+
+    assert len(themes) == 5
+
+    assert any(theme.name == "astra" for theme in themes)
+
+
+def test_get_themes_with_status(
+    installation_installed: Installation,
+) -> None:
+    theme = Theme(installation_installed, "astra")
+
+    theme.install_from_repository()
+    theme.activate()
+
+    themes = Themes(installation_installed).get(status=ThemeStatus.ACTIVE)
+
+    assert len(themes) == 1
+
+    assert themes[0].name == "astra"
