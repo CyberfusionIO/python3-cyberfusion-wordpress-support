@@ -48,7 +48,6 @@ class Pair:
                 "set",
                 self.name,
                 self.value,
-                "--no-add",
                 f"--type={self.type}",
             ]
         )
