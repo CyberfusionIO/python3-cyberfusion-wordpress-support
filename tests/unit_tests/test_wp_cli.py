@@ -14,6 +14,21 @@ def test_command_not_json(
     assert wp_cli_command.stdout.startswith("OS:")
 
 
+def test_command_requires_locale_force_file(
+    wp_cli_command: WPCLICommand,
+) -> None:
+    wp_cli_command.execute(["--info"])
+
+    require_arguments = [
+        argument
+        for argument in wp_cli_command.command
+        if argument.startswith("--require=")
+    ]
+
+    assert len(require_arguments) == 1
+    assert require_arguments[0].endswith("/force_locale.php")
+
+
 def test_command_json(wp_cli_command: WPCLICommand) -> None:
     wp_cli_command.execute(["--info"], json_format=True)
 
