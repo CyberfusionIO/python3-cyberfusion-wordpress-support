@@ -3,12 +3,15 @@
 import json
 import os
 import subprocess
+from importlib.resources import as_file, files
 from typing import List, Optional
 
 from _io import TextIOWrapper
 
 from cyberfusion.Common import find_executable
 from cyberfusion.WordPressSupport.exceptions import CommandFailedError
+
+RESOURCE_PHP_LOCALE_FORCE = files(__package__) / "force_locale.php"
 
 
 class WPCLICommand:
@@ -39,38 +42,43 @@ class WPCLICommand:
         stdin: Optional[TextIOWrapper] = None,
     ) -> None:
         """Set attributes and execute command."""
-        self.command = [self.binary_path]
-        self.command.extend(command)
-        self.command.append(f"--path={self.path}")
+        # Build and run the command inside 'as_file' so the '--require' file is
+        # guaranteed to exist on disk for the duration of the WP-CLI call.
 
-        # Add --format if JSON
+        with as_file(RESOURCE_PHP_LOCALE_FORCE) as locale_force_path:
+            self.command = [self.binary_path]
+            self.command.append(f"--require={locale_force_path}")
+            self.command.extend(command)
+            self.command.append(f"--path={self.path}")
 
-        if json_format:
-            self.command.append("--format=json")
+            # Add --format if JSON
 
-        # Execute command
+            if json_format:
+                self.command.append("--format=json")
 
-        try:
-            output = subprocess.run(
-                self.command,
-                check=True,
-                stdout=subprocess.PIPE,
-                stderr=subprocess.PIPE,
-                text=True,
-                cwd=self.path,
-                env=os.environ.copy()
-                | {
-                    "PWD": self.path,
-                },
-                stdin=stdin,
-            )
-        except subprocess.CalledProcessError as e:
-            raise CommandFailedError(
-                command=self.command,
-                return_code=e.returncode,
-                stdout=e.stdout,
-                stderr=e.stderr,
-            )
+            # Execute command
+
+            try:
+                output = subprocess.run(
+                    self.command,
+                    check=True,
+                    stdout=subprocess.PIPE,
+                    stderr=subprocess.PIPE,
+                    text=True,
+                    cwd=self.path,
+                    env=os.environ.copy()
+                    | {
+                        "PWD": self.path,
+                    },
+                    stdin=stdin,
+                )
+            except subprocess.CalledProcessError as e:
+                raise CommandFailedError(
+                    command=self.command,
+                    return_code=e.returncode,
+                    stdout=e.stdout,
+                    stderr=e.stderr,
+                )
 
         # Set attributes
 

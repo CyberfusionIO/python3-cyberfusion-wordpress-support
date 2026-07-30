@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "python3-cyberfusion-wordpress-support"
-version = "2.4.1"
+version = "2.5"
 description = "Library for WordPress."
 readme = "README.md"
 authors = [
@@ -17,3 +17,6 @@ dependencies = [
 
 [project.urls]
 "Source" = "https://github.com/CyberfusionIO/python3-cyberfusion-wordpress-support"
+
+[tool.setuptools.package-data]
+"cyberfusion.WordPressSupport" = ["*.php"]
