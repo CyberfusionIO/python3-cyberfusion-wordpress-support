@@ -20,7 +20,10 @@ class Cache:
         if not Plugin(self.installation, self.NAME_SUBCOMMAND_ELEMENTOR).is_installed:
             return
 
-        self.installation.command.execute([self.NAME_SUBCOMMAND_ELEMENTOR, "flush-css"])
+        self.installation.command.execute(
+            [self.NAME_SUBCOMMAND_ELEMENTOR, "flush-css"],
+            include_plugins=[self.NAME_SUBCOMMAND_ELEMENTOR],
+        )
 
     def flush(self) -> None:
         """Flush cache."""

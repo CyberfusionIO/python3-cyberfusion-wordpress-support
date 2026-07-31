@@ -17,7 +17,7 @@ def test_woocommerce_is_hpos_enabled(
 ) -> None:
     installation = installation_installed_with_activated_woocommerce_plugin
 
-    installation.command.execute(["wc", "hpos", "enable"])
+    installation.command.execute(["wc", "hpos", "enable"], skip_plugins=False)
 
     assert Woocommerce(installation).is_hpos_enabled
 
@@ -27,6 +27,6 @@ def test_woocommerce_is_hpos_disabled(
 ) -> None:
     installation = installation_installed_with_activated_woocommerce_plugin
 
-    installation.command.execute(["wc", "hpos", "disable"])
+    installation.command.execute(["wc", "hpos", "disable"], skip_plugins=False)
 
     assert not Woocommerce(installation).is_hpos_enabled

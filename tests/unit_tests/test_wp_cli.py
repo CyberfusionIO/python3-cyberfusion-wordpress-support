@@ -59,3 +59,49 @@ def test_binary_path_unset(wp_cli_command: WPCLICommand) -> None:
 
     with pytest.raises(ExecutableNotFound):
         wp_cli_command.binary_path
+
+
+def test_command_skips_plugins_and_themes_by_default(
+    wp_cli_command: WPCLICommand,
+) -> None:
+    wp_cli_command.execute(["--info"])
+
+    assert "--skip-plugins" in wp_cli_command.command
+    assert "--skip-themes" in wp_cli_command.command
+
+
+def test_command_skip_all_plugins(wp_cli_command: WPCLICommand) -> None:
+    wp_cli_command.execute(["--info"], skip_plugins=True)
+
+    assert "--skip-plugins" in wp_cli_command.command
+
+
+def test_command_loads_plugins(wp_cli_command: WPCLICommand) -> None:
+    wp_cli_command.execute(["--info"], skip_plugins=False)
+
+    assert not any(
+        argument.startswith("--skip-plugins") for argument in wp_cli_command.command
+    )
+
+
+def test_command_loads_themes(wp_cli_command: WPCLICommand) -> None:
+    wp_cli_command.execute(["--info"], skip_themes=False)
+
+    assert "--skip-themes" not in wp_cli_command.command
+
+
+def test_command_skip_specific_plugins(wp_cli_command: WPCLICommand) -> None:
+    wp_cli_command.execute(["--info"], skip_plugins=["foo", "bar"])
+
+    assert "--skip-plugins=foo,bar" in wp_cli_command.command
+    assert "--skip-plugins" not in wp_cli_command.command  # Not the bare flag
+
+
+def test_command_skip_specific_plugins_empty_loads_all(
+    wp_cli_command: WPCLICommand,
+) -> None:
+    wp_cli_command.execute(["--info"], skip_plugins=[])
+
+    assert not any(
+        argument.startswith("--skip-plugins") for argument in wp_cli_command.command
+    )

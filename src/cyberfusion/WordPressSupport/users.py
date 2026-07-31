@@ -76,6 +76,7 @@ class User:
                 self.NAME_SUBCOMMAND_ONE_TIME_LOGIN,
                 str(self.id),
             ],
+            include_plugins=[self.NAME_SUBCOMMAND_ONE_TIME_LOGIN],
         )
 
         return self.installation.command.stdout

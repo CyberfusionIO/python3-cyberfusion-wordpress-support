@@ -19,7 +19,13 @@ def test_cache_flush_regenerate_elementor_css(
 
     Cache(installation_installed_with_activated_elementor_plugin).flush()
 
-    spy_execute.assert_has_calls([mocker.call(mocker.ANY, ["elementor", "flush-css"])])
+    elementor_call = next(
+        call
+        for call in spy_execute.call_args_list
+        if call.args[1] == ["elementor", "flush-css"]
+    )
+
+    assert elementor_call.kwargs["include_plugins"] == ["elementor"]
 
 
 def test_cache_flush_no_regenerate_elementor_css(
