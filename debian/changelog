@@ -1,3 +1,9 @@
+python3-cyberfusion-wordpress-support (2.6) unstable; urgency=low
+
+  - Skip plugins and themes by default when running WP-CLI commands
+
+ -- William Edwards <wedwards@cyberfusion.nl>  Fri, 31 Jul 2026 21:06:00 +0200
+
 python3-cyberfusion-wordpress-support (2.5) unstable; urgency=low
 
   - Force WP-CLI output to the en_US locale

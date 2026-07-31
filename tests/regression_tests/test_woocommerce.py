@@ -11,12 +11,22 @@ def test_woocommerce_hpos_status_output_forced_to_english(
     # translations. Without the forced en_US locale, 'wp wc hpos status' would
     # then print Dutch (e.g. 'HPOS ingeschakeld?') instead of English.
 
-    installation.command.execute(["option", "update", "WPLANG", "nl_NL"])
     installation.command.execute(
-        ["language", "plugin", "install", "woocommerce", "nl_NL"]
+        ["option", "update", "WPLANG", "nl_NL"],
+        skip_plugins=False,
+        skip_themes=False,
+    )
+    installation.command.execute(
+        ["language", "plugin", "install", "woocommerce", "nl_NL"],
+        skip_plugins=False,
+        skip_themes=False,
     )
 
-    installation.command.execute(["wc", "hpos", "status"])
+    installation.command.execute(
+        ["wc", "hpos", "status"],
+        skip_plugins=False,
+        skip_themes=False,
+    )
 
     first_line = installation.command.stdout.splitlines()[0]
 
