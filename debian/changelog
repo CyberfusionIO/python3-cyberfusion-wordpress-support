@@ -1,3 +1,9 @@
+python3-cyberfusion-wordpress-support (2.6.1) unstable; urgency=low
+
+  - Add `INCLUDES` to `PairType`
+
+ -- William Edwards <wedwards@cyberfusion.nl>  Mon, 03 Aug 2026 22:57:00 +0200
+
 python3-cyberfusion-wordpress-support (2.6) unstable; urgency=low
 
   - Skip plugins and themes by default when running WP-CLI commands
