@@ -18,6 +18,7 @@ class PairType(StrEnum):
 
     CONSTANT = "constant"
     VARIABLE = "variable"
+    INCLUDES = "includes"
 
 
 class Pair:
