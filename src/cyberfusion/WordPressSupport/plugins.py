@@ -1,6 +1,6 @@
 """Classes for managing plugins."""
 
-from typing import Optional
+from typing import Optional, cast
 from enum import StrEnum
 from typing import List
 from cyberfusion.WordPressSupport import Installation
@@ -9,6 +9,7 @@ from cyberfusion.WordPressSupport.exceptions import (
     PluginAlreadyActivatedError,
     PluginAlreadyInstalledError,
 )
+from cyberfusion.WordPressSupport.version import Version
 
 
 class PluginStatus(StrEnum):
@@ -40,6 +41,16 @@ class Plugin:
             return False
 
         return True
+
+    @property
+    def version(self) -> Version:
+        """Get installed version."""
+        self.installation.command.execute(
+            [self.NAME_COMMAND, "get", self.name, "--field=version"],
+            json_format=True,
+        )
+
+        return Version(cast(str, self.installation.command.stdout))
 
     @property
     def is_activated(self) -> bool:

@@ -3,8 +3,11 @@
 from cyberfusion.WordPressSupport import Installation
 from cyberfusion.WordPressSupport.exceptions import WoocommerceNotInstalledError
 from cyberfusion.WordPressSupport.plugins import Plugin
+from cyberfusion.WordPressSupport.version import Version
 
 NAME_PLUGIN = "woocommerce"
+
+VERSION_HPOS_SUBCOMMAND = Version("7.1.0")
 
 
 class Woocommerce:
@@ -23,6 +26,9 @@ class Woocommerce:
 
         if not plugin.is_activated:
             raise WoocommerceNotInstalledError
+
+        if plugin.version < VERSION_HPOS_SUBCOMMAND:
+            return False
 
         self.installation.command.execute(
             [self.NAME_COMMAND, "hpos", "status"],

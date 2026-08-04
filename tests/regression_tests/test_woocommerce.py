@@ -1,4 +1,37 @@
+import pytest
+
 from cyberfusion.WordPressSupport import Installation
+from cyberfusion.WordPressSupport.exceptions import CommandFailedError
+from cyberfusion.WordPressSupport.woocommerce import Woocommerce
+
+
+def test_woocommerce_is_hpos_enabled_returns_false_below_hpos_subcommand_version(
+    installation_installed: Installation,
+) -> None:
+    installation = installation_installed
+
+    # The 'hpos' subcommand was added in WooCommerce 7.1.0. Install an older
+    # version, which does not have it.
+
+    installation.command.execute(
+        ["plugin", "install", "woocommerce", "--version=7.0.0", "--activate"],
+    )
+
+    # Prove the premise: the 'hpos' subcommand genuinely doesn't exist on this
+    # version, so running it fails with WP-CLI's 'not a registered subcommand'
+    # error (rather than failing for some unrelated reason).
+
+    with pytest.raises(CommandFailedError) as excinfo:
+        installation.command.execute(
+            ["wc", "hpos", "status"],
+            include_plugins=["woocommerce"],
+        )
+
+    assert "'hpos' is not a registered subcommand of 'wc'" in excinfo.value.stderr
+
+    # is_hpos_enabled must not run into that failure: it returns False instead.
+
+    assert Woocommerce(installation).is_hpos_enabled is False
 
 
 def test_woocommerce_hpos_status_output_forced_to_english(

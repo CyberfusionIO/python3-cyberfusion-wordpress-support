@@ -1,3 +1,10 @@
+python3-cyberfusion-wordpress-support (2.7) unstable; urgency=low
+
+  - Fix WooCommerce HPOS subcommand not existing on older versions
+  - Add getting plugin version (`Plugin.version`)
+
+ -- William Edwards <wedwards@cyberfusion.nl>  Tue, 04 Aug 2026 14:51:00 +0200
+
 python3-cyberfusion-wordpress-support (2.6.1) unstable; urgency=low
 
   - Add `INCLUDES` to `PairType`
