@@ -1,3 +1,9 @@
+python3-cyberfusion-wordpress-support (2.7.1) unstable; urgency=low
+
+  - Fix version check for HPOS
+
+ -- William Edwards <wedwards@cyberfusion.nl>  Wed, 05 Aug 2026 17:53:00 +0200
+
 python3-cyberfusion-wordpress-support (2.7) unstable; urgency=low
 
   - Fix WooCommerce HPOS subcommand not existing on older versions

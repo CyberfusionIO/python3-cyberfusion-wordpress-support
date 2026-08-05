@@ -7,7 +7,7 @@ from cyberfusion.WordPressSupport.version import Version
 
 NAME_PLUGIN = "woocommerce"
 
-VERSION_HPOS_SUBCOMMAND = Version("7.1.0")
+VERSION_HPOS_SUBCOMMAND = Version("8.2.0")
 
 
 class Woocommerce:
