@@ -10,11 +10,11 @@ def test_woocommerce_is_hpos_enabled_returns_false_below_hpos_subcommand_version
 ) -> None:
     installation = installation_installed
 
-    # The 'hpos' subcommand was added in WooCommerce 7.1.0. Install an older
+    # The 'hpos' subcommand was added in WooCommerce 8.2.0. Install an older
     # version, which does not have it.
 
     installation.command.execute(
-        ["plugin", "install", "woocommerce", "--version=7.0.0", "--activate"],
+        ["plugin", "install", "woocommerce", "--version=8.1.0", "--activate"],
     )
 
     # Prove the premise: the 'hpos' subcommand genuinely doesn't exist on this
