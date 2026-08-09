@@ -21,6 +21,8 @@ unit test and feature test:
   services:
     - name: mariadb:11.5
       alias: mariadb
+    - name: redis:7
+      alias: redis
   variables:
     MYSQL_ROOT_PASSWORD: 'dy9cAjyfhUpyaF7XuhzxzZ4a'
   script:
@@ -32,7 +34,7 @@ unit test and feature test:
     - pip install --no-cache-dir -r requirements/test.txt
     - pip install .
     - sudo -u wp_test pytest -n 10 -vvv --cov-branch --cov=cyberfusion.WordPressSupport --cov-config=.coveragerc --cov-fail-under=100 --junitxml=report-pytest.xml
-      --database-username=root --database-password='dy9cAjyfhUpyaF7XuhzxzZ4a' --database-host=mariadb
+      --database-username=root --database-password='dy9cAjyfhUpyaF7XuhzxzZ4a' --database-host=mariadb --redis-host=redis:6379
   artifacts:
     reports:
       junit: report-*.xml

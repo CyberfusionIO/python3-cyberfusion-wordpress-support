@@ -14,7 +14,7 @@
     <option name="RUN_TOOL" value="" />
     <option name="_new_keywords" value="&quot;&quot;" />
     <option name="_new_parameters" value="&quot;&quot;" />
-    <option name="_new_additionalArguments" value="&quot;--database-username\u003droot --database-password\u003da3e5a6EUsVQxmAQYcyEfSDSR --database-host\u003d127.0.0.1:21312&quot;" />
+    <option name="_new_additionalArguments" value="&quot;--database-username\u003droot --database-password\u003da3e5a6EUsVQxmAQYcyEfSDSR --database-host\u003d127.0.0.1:21312 --redis-host\u003d127.0.0.1:21313&quot;" />
     <option name="_new_target" value="&quot;&quot;" />
     <option name="_new_targetType" value="&quot;PATH&quot;" />
     <method v="2">
