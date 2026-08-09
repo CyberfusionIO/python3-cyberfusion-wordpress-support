@@ -97,3 +97,7 @@ class PluginAlreadyInstalledError(PluginError):
 
 class WoocommerceNotInstalledError(PluginError):
     pass
+
+
+class RedisObjectCacheNotInstalledError(PluginError):
+    pass

@@ -7,3 +7,7 @@ services:
       - "21312:3306"
     environment:
       MYSQL_ROOT_PASSWORD: 'a3e5a6EUsVQxmAQYcyEfSDSR'
+  redis:
+    image: redis:7
+    ports:
+      - "21313:6379"

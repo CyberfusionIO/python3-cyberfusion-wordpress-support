@@ -8,7 +8,7 @@ from sqlalchemy_utils import create_database, database_exists, drop_database
 
 from cyberfusion.Common import download_from_url, generate_random_string
 from cyberfusion.WordPressSupport import Installation
-from cyberfusion.WordPressSupport.config import Config
+from cyberfusion.WordPressSupport.config import Config, Pair, PairType
 from cyberfusion.WordPressSupport.core import Core
 from cyberfusion.WordPressSupport.plugins import Plugin
 from cyberfusion.WordPressSupport.themes import Theme
@@ -19,6 +19,7 @@ def pytest_addoption(parser: Parser) -> None:
     parser.addoption("--database-username", action="store", required=True)
     parser.addoption("--database-password", action="store", required=True)
     parser.addoption("--database-host", action="store", required=True)
+    parser.addoption("--redis-host", action="store", required=True)
 
 
 @pytest.fixture
@@ -34,6 +35,12 @@ def database_password(request: pytest.FixtureRequest) -> str:
 @pytest.fixture
 def database_host(request: pytest.FixtureRequest) -> str:
     return request.config.getoption("--database-host")
+
+
+@pytest.fixture
+def redis_host(request: pytest.FixtureRequest) -> str:
+    """Get Redis host in 'host:port' format."""
+    return request.config.getoption("--redis-host")
 
 
 @pytest.fixture(scope="session")
@@ -196,6 +203,28 @@ def installation_installed_with_activated_woocommerce_plugin(
     installation_installed: Installation,
 ) -> Installation:
     plugin = Plugin(installation_installed, "woocommerce")
+    plugin.install()
+    plugin.activate()
+
+    return installation_installed
+
+
+@pytest.fixture
+def installation_installed_with_activated_redis_cache_plugin(
+    installation_installed: Installation,
+    redis_host: str,
+) -> Installation:
+    host, port = redis_host.split(":", 1)
+
+    for name, value in (("WP_REDIS_HOST", host), ("WP_REDIS_PORT", port)):
+        Pair(
+            installation_installed,
+            name=name,
+            value=value,
+            type_=PairType.CONSTANT,
+        ).update()
+
+    plugin = Plugin(installation_installed, "redis-cache")
     plugin.install()
     plugin.activate()
 
