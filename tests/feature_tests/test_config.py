@@ -114,6 +114,21 @@ def test_update_pair(
     assert Config(installation_installed).get_pair("DB_CHARSET").value == "latin1"
 
 
+def test_update_pair_raw(
+    installation_installed: Installation,
+) -> None:
+    pair = Pair(
+        installation_installed,
+        name="DISABLE_WP_CRON",
+        value="true",
+        type_=PairType.CONSTANT,
+        raw=True,
+    )
+    pair.update()
+
+    assert Config(installation_installed).get_pair("DISABLE_WP_CRON").value is True
+
+
 def test_shuffle_salts(
     installation_installed: Installation,
 ) -> None:

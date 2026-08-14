@@ -33,6 +33,7 @@ class Pair:
         name: str,
         value: str,
         type_: PairType,
+        raw: bool = False,
     ) -> None:
         """Set attributes and call functions."""
         self.installation = installation
@@ -40,18 +41,22 @@ class Pair:
         self.name = name
         self.value = value
         self.type = type_
+        self.raw = raw
 
     def update(self) -> None:
         """Update pair value."""
-        self.installation.command.execute(
-            [
-                self.NAME_COMMAND,
-                "set",
-                self.name,
-                self.value,
-                f"--type={self.type}",
-            ]
-        )
+        command = [
+            self.NAME_COMMAND,
+            "set",
+            self.name,
+            self.value,
+            f"--type={self.type}",
+        ]
+
+        if self.raw:
+            command.append("--raw")
+
+        self.installation.command.execute(command)
 
 
 class Config:
