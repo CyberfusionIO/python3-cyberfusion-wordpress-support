@@ -1,3 +1,9 @@
+python3-cyberfusion-wordpress-support (2.9) unstable; urgency=low
+
+  - Allow setting pair raw (e.g. for boolean)
+
+ -- William Edwards <wedwards@cyberfusion.nl>  Fri, 14 Aug 2026 16:32:00 +0200
+
 python3-cyberfusion-wordpress-support (2.8) unstable; urgency=low
 
   - Add class for Redis Object Cache plugin (`RedisObjectCache`)
