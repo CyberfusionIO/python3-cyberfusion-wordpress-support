@@ -13,6 +13,21 @@ from cyberfusion.WordPressSupport.exceptions import (
 if TYPE_CHECKING:  # pragma: no cover
     from cyberfusion.WordPressSupport import Installation
 
+NAME_FILE_HTACCESS = ".htaccess"
+
+CONTENTS_FILE_HTACCESS = """# BEGIN WordPress
+
+RewriteEngine On
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+RewriteBase /
+RewriteRule ^index\\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+
+# END WordPress
+"""
+
 
 class Core:
     """Abstraction of WordPress core."""
@@ -128,3 +143,23 @@ class Core:
             # Remove tmp file
 
             os.unlink(self._tmp_file_path)
+
+        # Create .htaccess file
+
+        self.create_htaccess_file()
+
+    @property
+    def htaccess_file_path(self) -> str:
+        """Get path to .htaccess file."""
+        return os.path.join(self.installation.command.path, NAME_FILE_HTACCESS)
+
+    def create_htaccess_file(self) -> None:
+        """Create .htaccess file.
+
+        WordPress does not include this file by default: it creates it when
+        setting permalinks. Doing so with WP-CLI ('wp rewrite flush --hard')
+        requires a 'wp-cli.yml' or 'config.yml', which is unnecessary
+        boilerplate. Therefore, the file is written directly.
+        """
+        with open(self.htaccess_file_path, "w") as f:
+            f.write(CONTENTS_FILE_HTACCESS)

@@ -4,7 +4,7 @@ import pytest
 
 from cyberfusion.WordPressSupport import Installation
 from cyberfusion.WordPressSupport.config import Config
-from cyberfusion.WordPressSupport.core import Core
+from cyberfusion.WordPressSupport.core import CONTENTS_FILE_HTACCESS, Core
 from cyberfusion.WordPressSupport.exceptions import (
     CoreAlreadyInstalledError,
 )
@@ -158,3 +158,37 @@ def test_installed_core_download_existing_files_force(
     assert os.listdir(installation_installed.command.path)
 
     core.download(version="latest", locale="nl_NL", force=True)
+
+
+def test_uninstalled_core_install_creates_htaccess_file(
+    installation_uninstalled: Installation,
+    database_name: str,
+    database_username: str,
+    database_password: str,
+    database_host: str,
+) -> None:
+    core = Core(installation_uninstalled)
+    core.download(version="latest", locale="nl_NL")
+
+    config = Config(installation_uninstalled)
+    config.create(
+        database_name=database_name,
+        database_username=database_username,
+        database_user_password=database_password,
+        database_host=database_host,
+    )
+
+    assert not os.path.isfile(core.htaccess_file_path)
+
+    core.install(
+        url="https://test.nl",
+        site_title="Test",
+        admin_username="admin",
+        admin_password="sqGQNvHZaHxgGzWRnZcLCgLY",
+        admin_email_address="example@example.com",
+    )
+
+    assert os.path.isfile(core.htaccess_file_path)
+
+    with open(core.htaccess_file_path, "r") as f:
+        assert f.read() == CONTENTS_FILE_HTACCESS
